@@ -1,4 +1,3 @@
-# Anony
 [README.md](https://github.com/user-attachments/files/19213372/README.md)# Dual-Pull : NURBS-Based Fitting of Dual Point Clouds for Fast Surface Reconstruction Using Thick-slice Scans
 
 ## A. Supplementary Material
