@@ -112,7 +112,7 @@ NURBS curves are defined by control points, weights, and a knot vector:
 
 #### A.3.3 Surface reconstruction on CHAOS(CT)
 
-![CHAOS-CT-LIVER](C:\Users\70436\AppData\Roaming\Typora\typora-user-images\image-20250312231429889.png)
+![CHAOS-CT-LIVER](https://github.com/TianTianZhao/AnonyDual/blob/main/images/CT10_OUR00.png)
 
 
 
