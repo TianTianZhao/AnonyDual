@@ -108,7 +108,7 @@ NURBS curves are defined by control points, weights, and a knot vector:
 
 #### A.3.3 Surface reconstruction on ACDC(MRI)
 
-
+![ACDC_0701](https://github.com/TianTianZhao/AnonyDual/blob/main/images/CT10_OUR00.png)
 
 #### A.3.3 Surface reconstruction on CHAOS(CT)
 
