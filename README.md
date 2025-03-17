@@ -88,6 +88,8 @@ Where:
 
 #### A.3.3 Surface reconstruction on ACDC(MRI)
 
+![ACDC_0701](https://github.com/TianTianZhao/AnonyDual/blob/main/images/ACDC_com.png)
+
 ![ACDC_0701](https://github.com/TianTianZhao/AnonyDual/blob/main/images/ACDC_0701.png)
 
 #### A.3.3 Surface reconstruction on CHAOS(CT)
