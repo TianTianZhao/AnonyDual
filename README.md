@@ -96,7 +96,8 @@ Algorithm 1 is the organ contour processing procedure, while Algorithm 2 is the 
 ![Figure 3: 3D-Slicer compare with ours on ACDC Dataset Surface Reconstruction](https://github.com/TianTianZhao/AnonyDual/blob/main/images/ACDC_0701.png)
 
 #### A.3.3 Surface reconstruction on CHAOS(CT)
-
+below are the results of our method applied to the ACDC CT dataset to demonstrate the generalisability ability of our method across domains.
+### **Figure 4:  ours on CT Dataset**
 ![CHAOS-CT-LIVER](https://github.com/TianTianZhao/AnonyDual/blob/main/images/CT10_OUR00.png)
 
 
