@@ -29,7 +29,9 @@ Where:
 - $N_{i,p}(u)$ are the rational B-spline basis functions;
 - $p$ is the degree of the curve;
 - $u$ is the parameter that controls the shape of the curve.
-
+  
+#### A.1.2 the NURBS fitting process
+Algorithm 1 is the organ contour processing procedure, while Algorithm 2 is the dual point cloud fitting process.
 # Algorithm 1: NURBS Fitting for Initial Contours
 
 ## **Input**: 
@@ -75,9 +77,9 @@ Where:
 
 
    ## A.2.pullback operation
-
-   ![pullLoss](https://github.com/TianTianZhao/AnonyDual/blob/main/images/pullLoss.png)
-
+   The figure 1 represents the pull-back process of the dual point cloud to the initial point cloud.
+### **Figure 1: pullback operation**   
+![Figure 1: pullback operation](https://github.com/TianTianZhao/AnonyDual/blob/main/images/pullLoss.png)
 
 
 ### A.3. Additional experiments and detail
@@ -88,9 +90,10 @@ Where:
 
 #### A.3.3 Surface reconstruction on ACDC(MRI)
 
-![ACDC_0701](https://github.com/TianTianZhao/AnonyDual/blob/main/images/ACDC_com.png)
-
-![ACDC_0701](https://github.com/TianTianZhao/AnonyDual/blob/main/images/ACDC_0701.png)
+### **Figure 2: ACDC Dataset Surface Reconstruction**
+![Figure 2: ACDC Dataset Surface Reconstruction](https://github.com/TianTianZhao/AnonyDual/blob/main/images/ACDC_com.png)
+### **Figure 3: 3D-Slicer compare with ours on ACDC Dataset**
+![Figure 3: 3D-Slicer compare with ours on ACDC Dataset Surface Reconstruction](https://github.com/TianTianZhao/AnonyDual/blob/main/images/ACDC_0701.png)
 
 #### A.3.3 Surface reconstruction on CHAOS(CT)
 
