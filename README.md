@@ -96,7 +96,7 @@ NURBS curves are defined by control points, weights, and a knot vector:
 
    ## A.2.pullback operation
 
-   ![pullLoss](C:\Users\70436\Desktop\小论文miccai\MICCAI2025-LaTeX-Template\MICCAI 2025 LaTeX Template\figure\pullLoss.png)
+   ![pullLoss](https://github.com/TianTianZhao/AnonyDual/blob/main/images/pullLoss.png)
 
 
 
