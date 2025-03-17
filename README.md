@@ -14,85 +14,65 @@ NURBS (Non-Uniform Rational B-Splines) is a powerful method for representing cur
 - **Rational**: Uses weights to control the shape of the curve, enabling precise fitting.
 - **B-Splines**: Ensures smooth connections and avoids abrupt changes.
 
+# NURBS Curve Mathematical Expression
+
 The mathematical expression of NURBS curves is as follows:
 
 $$
-C(u) = \frac{\sum_{i=0}^{n} N_{i,p}(u) w_i P_i}{\sum_{i=0}^{n} N_{i,p}(u) w_i}]
+C(u) = \frac{\sum_{i=0}^{n} N_{i,p}(u) w_i P_i}{\sum_{i=0}^{n} N_{i,p}(u) w_i}
 $$
+
 Where:
-- \( C(u) \) is a point on the curve;
-- \( P_i \) are the control points;
-- \( N_{i,p}(u) \) are the rational B-spline basis functions;
-- \( p \) is the degree of the curve;
-- \( u \) is the parameter that controls the shape of the curve.
 
-NURBS curves are defined by control points, weights, and a knot vector:
-1. **Control Points**: Determine the shape of the curve.
+- $C(u)$ is a point on the curve;
+- $P_i$ are the control points;
+- $N_{i,p}(u)$ are the rational B-spline basis functions;
+- $p$ is the degree of the curve;
+- $u$ is the parameter that controls the shape of the curve.
 
-2. **Knot Vector**: Determines the domain and smoothness of the basis functions.
+# Algorithm 1: NURBS Fitting for Initial Contours
 
-3. **Weights**: Control the influence of different points on the curve.
+## **Input**: 
+- **P** = Extracted contour points from MRI slices
 
-   #### A.1.1 NURBS fitting process
+## **Output**: 
+- NURBS-fitted contour curves
 
-   $$
-   ### Algorithm 1: NURBS Fitting for Initial Contours
-   
-   **Input:**  
-   - `P` = Extracted contour points from MRI slices  
-   
-   **Output:**  
-   - NURBS-fitted contour curves  
-   
-   ---
-   
-   1. **Sort contour points** in a counterclockwise order using `sort_contour_point(P)`.  
-   2. **Initialize NURBS curve `N`:**  
-      - Set degree `p = 3`.  
-      - Define control points.  
-      - Append the first `p + 1` control points to `P'` for closure.  
-      - Set the knot vector `T` as a uniform distribution.  
-   3. **Compute NURBS curve points `C` using:**  
-      \[
-      C(u) = \frac{\sum_{i=0}^{n} N_{i,p}(u) w_i P_i}{\sum_{i=0}^{n} N_{i,p}(u) w_i}
-      \]  
-   4. **Reconstruct 3D points:**  
-      - For each point, assign `z` from the original contour layer.  
-      - Store the final 3D contour.  
-   5. **Return** the NURBS-fitted contour curves.
-   $$
+| **Step** | **Description** |
+|----------|----------------|
+| **1** | Sort contour points in a counterclockwise order using `sort_contour_point(P)`. |
+| **2** | Initialize NURBS curve **N**: |
+| **2.1** | Set degree **p = 3**. |
+| **2.2** | Define control points. |
+| **2.3** | Append the first **p + 1** control points to **P'** for closure. |
+| **2.4** | Set the knot vector **T** as a uniform distribution. |
+| **3** | Compute NURBS curve points **C** using NURBS interpolation. |
+| **4** | Reconstruct 3D points: |
+| **4.1** | For each point, assign **z** from the original contour layer. |
+| **4.2** | Store the final 3D contour. |
+| **5** | Return the fitted NURBS curve. |
 
-   
+# Algorithm 2: Dual Contour Construction
 
-   
+## **Input**: 
+- **NURBS-fitted contours** from different MRI slices
 
-   ```markdown
-   ### Algorithm 2: Dual Contour Construction
-   
-   **Input:**  
-   - NURBS-fitted contours from different MRI slices  
-   
-   **Output:**  
-   - Dual contour curves for smooth 3D reconstruction  
-   
-   ---
-   
-   1. **For each index `i` in `[1, m]`** (each corresponding contour point along the layers):  
-      - Extract corresponding points from all slices:  
-        \[
-        P_i = \{P_{i,1}, P_{i,2}, \dots, P_{i,n}\}
-        \]  
-   2. **Construct a new NURBS curve `N_d`:**  
-      - Set degree `p = 3`.  
-      - Define control points.  
-      - Generate a non-uniform knot vector `T`.  
-   3. **Compute the dual contour curve:**  
-      \[
-      C_d(u) = \frac{\sum_{j=0}^{n} N_{j,p}(u) w_j P_j}{\sum_{j=0}^{n} N_{j,p}(u) w_j}
-      \]  
-   4. **Store `C_d` in the dual contour set `D`.**  
-   5. **Return `D`.**  
-   ```
+## **Output**: 
+- Dual contour curves for smooth 3D reconstruction
+
+| **Step** | **Description** |
+|----------|----------------|
+| **1** | For each index **i** in \([1, m]\) (each corresponding contour point along the layers): |
+| **1.1** | Extract corresponding points from all slices. |
+| **2** | Construct a new NURBS curve **N_d**: |
+| **2.1** | Set degree **p = 3**. |
+| **2.2** | Define control points. |
+| **2.3** | Generate a non-uniform knot vector. |
+| **3** | Compute the dual contour curve. |
+| **4** | Store the result in the dual contour set. |
+| **5** | Return the dual contour curves. |
+
+
 
    ## A.2.pullback operation
 
