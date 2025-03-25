@@ -131,7 +131,7 @@ However, in the more structurally complex **myocardial region**, although Dual-P
 > **Note:** Bold values indicate the best performance, and underlined values indicate the second-best performance for each metric.
 
 ### **Figure 2: ACDC Dataset Surface Reconstruction**
-![Figure 2: ACDC Dataset Surface Reconstruction](https://github.com/TianTianZhao/AnonyDual/blob/main/images/ACDC_com.png)
+![Figure 2: ACDC Dataset Surface Reconstruction](https://github.com/TianTianZhao/AnonyDual/blob/main/images/ACDC_SLICER_COM.png)
 ### **Figure 3: 3D-Slicer compare with ours on ACDC Dataset**
 ![Figure 3: 3D-Slicer compare with ours on ACDC Dataset Surface Reconstruction](https://github.com/TianTianZhao/AnonyDual/blob/main/images/ACDC_0701.png)
 
