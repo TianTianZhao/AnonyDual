@@ -149,8 +149,8 @@ When two losses are combined:
 The figure below shows visual reconstruction comparisons of the **right ventricle** on the ACDC dataset. It is evident that the **minimal surface loss** provides more natural extrapolation in regions with missing slices.
 
 <p align="center">
-  <img src="pic/rv_noarea01.png" alt="No Area" width="300"/>
-  <img src="pic/rv_+area02.png" alt="With Area" width="300"/>
+  <img src="images/rv_noarea01.png" alt="No Area" width="300"/>
+  <img src="images/rv_+area02.png" alt="With Area" width="300"/>
 </p>
 
 **Figure:** Visual comparison of right ventricle 3D reconstruction on ACDC dataset  
