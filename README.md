@@ -96,7 +96,7 @@ Algorithm 1 is the organ contour processing procedure, while Algorithm 2 is the 
 ![Figure 3: 3D-Slicer compare with ours on ACDC Dataset Surface Reconstruction](https://github.com/TianTianZhao/AnonyDual/blob/main/images/ACDC_0701.png)
 
 #### A.3.3 Surface reconstruction on CHAOS(CT)
-below are the results of our method applied to the ACDC CT dataset to demonstrate the generalisability ability of our method across domains.
+The proposed **Dual-Pull** 3D reconstruction framework was originally designed for **thick-slice MRI data**. However, thanks to its **generalized implicit field representation** and **robust geometric constraint mechanisms**, the method also demonstrates strong **cross-modality generalization capability** when applied to **CT slice data**. Experimental results show that even when the input modality shifts from MRI to CT, the Dual-Pull model consistently achieves **accurate reconstruction of organ surfaces**, effectively addressing challenges such as **sparsity** and **topological defects** caused by large inter-slice spacing. These findings further validate the **versatility and generalizability** of the proposed method in the field of medical imaging.
 ### **Figure 4:  ours on CT Dataset**
 ![CHAOS-CT-LIVER](https://github.com/TianTianZhao/AnonyDual/blob/main/images/CT10_OUR00.png)
 
