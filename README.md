@@ -88,47 +88,54 @@ Algorithm 1 is the organ contour processing procedure, while Algorithm 2 is the 
 
 #### A.3.2 Experimental setup and timing performance
 
-#### A.3.3 Surface reconstruction on ACDC(MRI)
- Evaluation on ACDC Dataset
+#### A.3.3 Quantitative Evaluation on ACDC Dataset(MRI)
 
-To further verify the effectiveness and applicability of the **Dual-Pull** framework in 3D reconstruction of cardiac structures, we conducted evaluations on the public **ACDC dataset**, focusing on three key anatomical components: **left ventricle (LV)**, **right ventricle (RV)**, and **myocardium (Myo)**. We performed comprehensive quantitative comparisons against state-of-the-art methods including **IGR**, **DiGS**, **PINC**, **IPSR**, and **SPSR**. The results across four commonly used metrics—**Chamfer Distance (CD)**, **Hausdorff Distance (HD)**, **Average Symmetric Surface Distance (ASSD)**, and **Earth Mover’s Distance (EMD)**—are summarized in the table below.
+To further validate the effectiveness and accuracy of the proposed **Dual-Pull** framework in 3D reconstruction of cardiac anatomy, we conducted experiments on the public **ACDC dataset**, focusing on three key anatomical structures: **left ventricle (LV)**, **right ventricle (RV)**, and **myocardium (Myo)**. We performed a comprehensive quantitative comparison with existing state-of-the-art methods, including **IGR**, **DiGS**, **PINC**, **IPSR**, and **SPSR**.
 
-From the overall results, **Dual-Pull** consistently achieves excellent performance in **Chamfer Distance** and **ASSD**, particularly for **RV** and **LV**, where CD reaches **2.58e-03** and _1.86e-02_ respectively, outperforming traditional methods and demonstrating superior global geometry restoration. In ASSD, Dual-Pull also achieves optimal or near-optimal results for RV and Myo, indicating strong consistency and smoothness of the reconstructed surface.
+**Table 1** presents the evaluation results in terms of four metrics: **Chamfer Distance (CD)**, **Hausdorff Distance (HD)**, **Average Symmetric Surface Distance (ASSD)**, and **Earth Mover’s Distance (EMD)**.
 
-For **Hausdorff Distance**, Dual-Pull achieves the lowest values for both LV (**2.48e-01**) and RV (**1.47e-01**), outperforming all baseline methods, which reflects its robustness against extreme point errors. In the Myo task, although **IPSR** performs slightly better in HD, Dual-Pull remains highly competitive.
+From the overall results, the **Dual-Pull** method consistently achieves excellent performance on **CD** and **ASSD**, particularly in the reconstruction of the **RV** and **LV**, where CD scores are **2.58e-03** and _1.86e-02_, respectively. These values are significantly better than traditional methods, indicating superior reconstruction of overall geometry. Moreover, in terms of **ASSD**, Dual-Pull also achieves optimal or sub-optimal results for the RV and Myo, showcasing strong capabilities in boundary smoothness and spatial consistency.
 
-On the **EMD** metric, all methods perform similarly (within the range of 10⁻⁴), suggesting equivalent density distribution among point clouds. This implies that EMD is more reflective of sampling consistency than model performance.
+Regarding the **Hausdorff Distance**, Dual-Pull outperforms all other methods on **LV** and **RV** with minimum HD values of **2.48e-01** and **1.47e-01**, respectively, demonstrating robust handling of outlier point errors. Although **IPSR** performs slightly better on HD in the **Myo** reconstruction, Dual-Pull remains competitive and stable.
 
-From an anatomical perspective, **Dual-Pull** demonstrates outstanding performance on geometrically smoother structures like **LV** and **RV**, which benefits significantly from the proposed **NURBS-based dual-contour generation strategy**. This approach enhances cross-slice geometric continuity and improves shape fidelity.
+For the **EMD** metric, differences among all methods are minimal (within the 1e-4 range), suggesting convergence in terms of point cloud density distribution. Thus, EMD more so reflects the uniformity of sampling strategies than the reconstruction quality itself.
 
-However, in the more structurally complex **myocardial region**, although Dual-Pull maintains competitive results in CD and ASSD, there is still room for improvement in HD. Given the intricate concave structures and fine details of the myocardium surface, future work may explore replacing NURBS fitting with more expressive generative models, such as **diffusion models**, to further improve reconstruction accuracy for complex tissues.
+From the organ-wise analysis, **Dual-Pull** excels particularly in structures with regular morphology and smooth surfaces (e.g., LV and RV), which can be attributed to its **NURBS-based contour-dual point cloud construction**. This strategy enhances geometric continuity across slices and significantly improves anatomical shape recovery.
 
-#### Quantitative Comparison on ACDC Dataset
+However, for more structurally complex regions such as the **myocardium**, while Dual-Pull remains competitive in CD and ASSD, its HD value suggests room for improvement. Given the intricate surface details and irregular boundaries of the myocardium, future work may explore more expressive generative models—such as **Diffusion Models**—as alternatives to NURBS fitting, aiming to further boost reconstruction precision for complex anatomical structures.
 
-| Organ | Method | CD (↓) | HD (↓) | ASSD (↓) | EMD (↓) |
-|-------|--------|--------|--------|----------|---------|
-| **Left Ventricle (LV)** | Dual-Pull (Ours) | _1.86e-02_ | **2.48e-01** | 8.62e-02 | **5.89e-04** |
-|  | IGR | 1.09e-02 | 5.75e-01 | _5.84e-02_ | **5.89e-04** |
-|  | DiGS | **4.92e-03** | 5.65e-01 | **3.44e-02** | **5.89e-04** |
-|  | PINC | 2.24e-02 | 5.89e-01 | 9.04e-02 | **5.89e-04** |
-|  | IPSR | 1.23e-02 | _5.49e-01_ | 4.62e-02 | **5.89e-04** |
-|  | SPSR | 5.52e-02 | _5.49e-01_ | 1.40e-01 | **5.89e-04** |
+---
 
-| **Right Ventricle (RV)** | Dual-Pull (Ours) | **2.58e-03** | **1.47e-01** | _2.80e-02_ | **5.48e-04** |
-|  | IGR | 6.19e-03 | 4.02e-01 | 4.03e-02 | **5.48e-04** |
-|  | DiGS | _2.92e-03_ | _2.74e-01_ | **2.77e-02** | **5.48e-04** |
-|  | PINC | 6.26e-02 | 5.22e-01 | 1.55e-01 | **5.48e-04** |
-|  | IPSR | 8.20e-03 | 3.74e-01 | 3.83e-02 | **5.48e-04** |
-|  | SPSR | 1.97e-02 | 3.74e-01 | 7.56e-02 | **5.48e-04** |
+#### Table 1. Quantitative Comparison on the ACDC Dataset (Lower is Better ↓)
 
-| **Myocardium (Myo)** | Dual-Pull (Ours) | _1.55e-02_ | 4.95e-01 | _7.69e-02_ | **2.89e-04** |
-|  | IGR | 3.42e-02 | _2.70e-01_ | 1.17e-01 | **2.89e-04** |
-|  | DiGS | **3.31e-03** | 4.77e-01 | **3.12e-02** | **2.89e-04** |
-|  | PINC | 3.71e-02 | 5.75e-01 | 1.11e-01 | **2.89e-04** |
-|  | IPSR | _4.25e-03_ | **2.10e-01** | 3.53e-02 | **2.89e-04** |
-|  | SPSR | 4.32e-02 | **2.10e-01** | 1.27e-01 | **2.89e-04** |
+| Organ | Method         | CD ↓       | HD ↓       | ASSD ↓    | EMD ↓      |
+|-------|----------------|------------|------------|-----------|------------|
+| **LV** | Dual-Pull (Ours) | _1.86e-02_ | **2.48e-01** | 8.62e-02  | **5.89e-04** |
+|       | IGR            | 1.09e-02   | 5.75e-01   | _5.84e-02_ | **5.89e-04** |
+|       | DiGS           | **4.92e-03** | 5.65e-01   | **3.44e-02** | **5.89e-04** |
+|       | PINC           | 2.24e-02   | 5.89e-01   | 9.04e-02  | **5.89e-04** |
+|       | IPSR           | 1.23e-02   | _5.49e-01_ | 4.62e-02  | **5.89e-04** |
+|       | SPSR           | 5.52e-02   | _5.49e-01_ | 1.40e-01  | **5.89e-04** |
 
-> **Note:** Bold values indicate the best performance, and underlined values indicate the second-best performance for each metric.
+| Organ | Method         | CD ↓       | HD ↓       | ASSD ↓    | EMD ↓      |
+|-------|----------------|------------|------------|-----------|------------|
+| **RV** | Dual-Pull (Ours) | **2.58e-03** | **1.47e-01** | _2.80e-02_ | **5.48e-04** |
+|       | IGR            | 6.19e-03   | 4.02e-01   | 4.03e-02  | **5.48e-04** |
+|       | DiGS           | _2.92e-03_ | _2.74e-01_ | **2.77e-02** | **5.48e-04** |
+|       | PINC           | 6.26e-02   | 5.22e-01   | 1.55e-01  | **5.48e-04** |
+|       | IPSR           | 8.20e-03   | 3.74e-01   | 3.83e-02  | **5.48e-04** |
+|       | SPSR           | 1.97e-02   | 3.74e-01   | 7.56e-02  | **5.48e-04** |
+
+| Organ | Method         | CD ↓       | HD ↓       | ASSD ↓    | EMD ↓      |
+|-------|----------------|------------|------------|-----------|------------|
+| **Myo** | Dual-Pull (Ours) | _1.55e-02_ | 4.95e-01   | _7.69e-02_ | **2.89e-04** |
+|       | IGR            | 3.42e-02   | _2.70e-01_ | 1.17e-01  | **2.89e-04** |
+|       | DiGS           | **3.31e-03** | 4.77e-01   | **3.12e-02** | **2.89e-04** |
+|       | PINC           | 3.71e-02   | 5.75e-01   | 1.11e-01  | **2.89e-04** |
+|       | IPSR           | _4.25e-03_ | **2.10e-01** | 3.53e-02  | **2.89e-04** |
+|       | SPSR           | 4.32e-02   | **2.10e-01** | 1.27e-01  | **2.89e-04** |
+
+
 
 ### **Figure 2: ACDC Dataset Surface Reconstruction**
 ![Figure 2: ACDC Dataset Surface Reconstruction](https://github.com/TianTianZhao/AnonyDual/blob/main/images/ACDC_SLICER_COM.png)
