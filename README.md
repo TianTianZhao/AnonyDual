@@ -86,7 +86,53 @@ Algorithm 1 is the organ contour processing procedure, while Algorithm 2 is the 
 
 #### A.3.1 Evaluation metrics
 
+In real-world scenarios, obtaining ground-truth 3D models of organs is often impractical, making it difficult to directly compare reconstruction results with absolute ground truth. Following the evaluation protocol proposed in **IGR** , we uniformly sample **1 million points** from the reconstructed mesh and compare them with the original scanned point cloud.
+
+To measure the similarity between the reconstructed mesh and the initial (scanned) mesh, we adopt the following commonly used evaluation metrics:
+
+- **Chamfer Distance (CD)**  
+- **Hausdorff Distance (HD)**  
+- **Earth Mover’s Distance (EMD)**  
+- **Average Symmetric Surface Distance (ASSD)**
+
+These metrics together provide a comprehensive evaluation of geometric accuracy, point-wise correspondence, and boundary consistency of the reconstructed shapes.
+
 #### A.3.2 Experimental setup and timing performance
+
+The proposed **Dual-Pull** model is implemented based on the deep learning framework **PyTorch**~[^1]. All experiments were conducted on a single-GPU server running **Ubuntu**. The GPU used was **NVIDIA GeForce RTX 4090** with **24GB** of memory, and the CUDA version was **12.1**. The **Dual-IGR** module was developed using **PyTorch 2.4.1** and programmed in **Python 3.10**. A summary of the experimental environment is provided in **Table 2**.
+
+#### Table 2. Experimental Environment Configuration
+
+| Environment         | Version / Specification       |
+|---------------------|-------------------------------|
+| Operating System    | Ubuntu 18.04                  |
+| CPU Model           | Intel(R) Xeon(R) Gold 6133    |
+| GPU Model           | NVIDIA GeForce RTX 4090       |
+| System Memory       | 32GB                          |
+| GPU Memory          | 24GB                          |
+| PyTorch Version     | 2.4.1                         |
+| Python Version      | 3.10                          |
+| CUDA Version        | 12.1                          |
+
+For all experiments, the **Adam optimizer**~[^2] was used. The specific training hyperparameters are listed in **Table 3**.
+
+#### Table 3. Training Hyperparameter Settings
+
+| Hyperparameter            | Value      |
+|---------------------------|------------|
+| Batch Size                | 1          |
+| Optimizer                 | Adam       |
+| Initial Learning Rate     | 0.001      |
+| Learning Rate Milestone   | 100 epochs |
+| Learning Rate Decay Factor| 0.99       |
+
+---
+
+[^1]: Imambi, S. M. et al. PyTorch: An imperative style, high-performance deep learning library. *arXiv preprint arXiv:1912.01703* (2021).  
+[^2]: Kinga, D., & Ba, J. (2015). Adam: A method for stochastic optimization. *International Conference on Learning Representations (ICLR)*.
+
+
+
 
 #### A.3.3 Quantitative Evaluation on ACDC Dataset(MRI)
 
