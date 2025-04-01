@@ -76,12 +76,23 @@ Algorithm 1 is the organ contour processing procedure, while Algorithm 2 is the 
 
 
 
-   ## A.2.pullback operation
+
+   ## A.2.pullback operation 
    The figure 1 represents the pull-back process of the dual point cloud to the initial point cloud.
 ### **Figure 1: pullback operation**   
 ![Figure 1: pullback operation](https://github.com/TianTianZhao/AnonyDual/blob/main/images/pullLoss.png)
 
-
+In the absence of a skeletonization algorithm, the extracted point cloud forms a ring-like structure, potentially compromising the accuracy of the subsequent 3D reconstruction, as illustrated in the figure below.
+<table>
+  <tr>
+    <td><img src="path/to/gjh.png" alt="Image 1" width="300"/></td>
+    <td><img src="path/to/no_gjh.png" alt="Image 2" width="300"/></td>
+  </tr>
+  <tr>
+    <td align="center">fig1：no Skeleton</td>
+    <td align="center">fig2：with Skeleton</td>
+  </tr>
+</table>
 ### A.3. Additional experiments and detail
 
 #### A.3.1 Evaluation metrics
