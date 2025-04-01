@@ -190,9 +190,31 @@ However, for more structurally complex regions such as the **myocardium**, while
 
 #### A.3.3 Surface reconstruction on CHAOS(CT)
 The proposed **Dual-Pull** 3D reconstruction framework was originally designed for **thick-slice MRI data**. However, thanks to its **generalized implicit field representation** and **robust geometric constraint mechanisms**, the method also demonstrates strong **cross-modality generalization capability** when applied to **CT slice data**. Experimental results show that even when the input modality shifts from MRI to CT, the Dual-Pull model consistently achieves **accurate reconstruction of organ surfaces**, effectively addressing challenges such as **sparsity** and **topological defects** caused by large inter-slice spacing. These findings further validate the **versatility and generalizability** of the proposed method in the field of medical imaging.
-### **Figure 4:  ours on CT Dataset**
-![CHAOS-CT-LIVER](https://github.com/TianTianZhao/AnonyDual/blob/main/images/CT10_OUR00.png)
 
+Fig1 and fig2 shows the 3D reconstruction results of the liver from CT images in the CHAOS dataset. The proposed Dual-Pull 3D reconstruction framework was originally designed for thick-slice MRI data. However, due to its generalized implicit field representation and robust geometric constraint mechanisms, the method also demonstrates strong cross-modality generalization capability when applied to CT slice data. Experimental results indicate that even when the input modality shifts from MRI to CT, the Dual-Pull model can still achieve stable and accurate reconstruction of organ surfaces. It effectively overcomes challenges such as sparsity and topological defects caused by large inter-slice spacing, reasonably extrapolates the missing parts of the point cloud, and completes the reconstruction of the missing regions. These results confirm the versatility and generalizability of the proposed method in the field of medical imaging. 
+
+To further validate the effectiveness of Dual-Pull on CT datasets, we also conducted experiments on the MM-WHS dataset. As shown in Fig3 and fig4, our method successfully removes erroneous outlier noise and achieves high-quality reconstruction results.
+
+<table>
+  <tr>
+    <td><img src="./images/acdc_ct_pc_00.png" alt="Image 1" width="300"/></td>
+    <td><img src="./images/acdc_ct_our_01.png" alt="Image 2" width="300"/></td>
+  </tr>
+  <tr>
+    <td align="center">fig1：liver point clouds</td>
+    <td align="center">fig2：ours</td>
+  </tr>
+</table>
+<table>
+  <tr>
+    <td><img src="./images/mmw_zdm00.png" alt="Image 1" width="300"/></td>
+    <td><img src="./images/mmw_zdm_our_01.png" alt="Image 2" width="300"/></td>
+  </tr>
+  <tr>
+    <td align="center">fig3：Point Cloud of the Ascending Aorta</td>
+    <td align="center">fig4：3D Reconstruction Result of the Ascending Aorta</td>
+  </tr>
+</table>
 ## 🔍 Ablation Study
 
 To validate the contribution of each proposed component in improving 3D reconstruction performance, we conduct a detailed ablation study on the **right ventricle** masks of the **ACDC dataset**. The study evaluates the effectiveness of each core module in our proposed **Dual-Pull** framework, including:
